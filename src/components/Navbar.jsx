@@ -1,0 +1,140 @@
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import SSlogo from "../assets/hero/SSlogo.png";
+
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navLinks = [
+    "Home",
+    "About Us",
+    "Use Cases",
+    "Roadmap",
+    "Tokenomics",
+    "FAQ",
+  ];
+
+  return (
+   <header className="absolute top-0 left-0 w-full z-50">
+  <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 xl:px-16">
+    <div className="h-[80px] md:h-[90px] lg:h-[100px] flex items-center justify-between">
+          
+          {/* Logo */}
+          <div className="flex-shrink-0">
+           <img
+  src={SSlogo}
+  alt="SS Coin"
+  className="
+    w-[70px]
+    h-auto
+    md:w-[85px]
+    lg:w-[99px]
+    xl:w-[110px]
+  "
+/>
+          </div>
+
+          {/* Desktop Menu */}
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8 xl:gap-10">
+  {navLinks.map((link) => (
+    <a
+      key={link}
+      href="#"
+      className="
+        text-[#D1D5DC]
+        text-[14px]
+        md:text-[15px]
+        lg:text-[16px]
+        font-normal
+        transition-all
+        duration-300
+        hover:text-[#D9A11D]
+      "
+    >
+      {link}
+    </a>
+  ))}
+</nav>
+
+          {/* Buy Button */}
+          <div className="hidden md:block">
+  <button
+    className="
+      h-[45px]
+      md:w-[120px]
+      lg:w-[130px]
+      xl:w-[140px]
+      bg-[#D9A11D]
+      text-white
+      text-[14px]
+      lg:text-[16px]
+      font-medium
+      [clip-path:polygon(12%_0%,100%_0%,100%_75%,88%_100%,0%_100%,0%_30%)]
+    "
+  >
+    Buy SSC Now
+  </button>
+</div>
+          {/* Mobile Menu Button */}
+          <button
+  onClick={() => setMenuOpen(!menuOpen)}
+  className="md:hidden text-white"
+>
+  {menuOpen ? <X size={28} /> : <Menu size={28} />}
+</button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+  className={`
+    md:
+    absolute
+    top-full
+    left-0
+    w-full
+    bg-black/95
+    backdrop-blur-md
+    overflow-hidden
+    transition-all
+    duration-300
+    ${menuOpen ? "max-h-[500px]" : "max-h-0"}
+  `}
+>
+        <div className="flex flex-col items-center py-6 gap-6">
+          {navLinks.map((link) => (
+            <a
+              key={link}
+              href="#"
+              className="text-white text-lg hover:text-[#D9A11D]"
+            >
+              {link}
+            </a>
+          ))}
+
+         <button
+  className="
+    h-[50px]
+    w-[180px]
+    bg-[#D89F15]
+    text-white
+    text-lg
+    font-medium
+    flex
+    items-center
+    justify-center
+    [clip-path:polygon(12%_0%,100%_0%,100%_75%,88%_100%,0%_100%,0%_30%)]
+    hover:scale-105
+    transition-all
+    duration-300
+  "
+>
+  Buy SSC Now
+</button>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Navbar;
