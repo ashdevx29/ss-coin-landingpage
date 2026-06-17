@@ -41,7 +41,7 @@ export default function StatsSection() {
               justify-center
               items-center
 
-              shadow-[0_0_18px_0_#F0B10040]
+              shadow-[0px_0px_2px_0px_#F0B10040]
               "
             >
 

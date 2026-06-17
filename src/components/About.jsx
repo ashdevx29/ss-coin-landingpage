@@ -3,7 +3,7 @@ import aboutCoin from "../assets/images/aboutCoin.png";
 
 const About = () => {
   return (
-    <section
+    <section id="about"
       className="relative overflow-hidden py-8 lg:py-14 bg-black"
       style={{
         backgroundImage: `url(${aboutBg})`,

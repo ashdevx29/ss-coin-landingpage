@@ -70,7 +70,7 @@ const roadmap = [
 
 export default function Roadmap() {
   return (
-    <section className="bg-black text-white py-8 md:py-14 overflow-hidden">
+    <section id="roadmap" className="bg-black text-white py-8 md:py-14 overflow-hidden">
       <div className="max-w-full  px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
 
         <h2 className="text-center text-2xl sm:text-4xl md:text-5xl text-[#ffffff] font-[400]">

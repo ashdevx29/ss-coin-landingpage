@@ -49,7 +49,7 @@ const UseCases = () => {
     active === cards.length - 1 ? 0 : active + 1;
 
   return (
-    <section className="bg-black max-w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 ">
+    <section id="usecase" className="bg-black max-w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 ">
 
       <div
         className="w-full px-3 sm:px-4 md:px-6 lg:px-8 bg-[#FFFFFF]
@@ -95,7 +95,7 @@ const UseCases = () => {
             className="
             max-w-[700px]
             mx-auto
-            mt-5
+            mt-4
             font-[Poppins] font-[400]
             text-[#000]
             text-sm
@@ -112,33 +112,39 @@ const UseCases = () => {
 
         {/* Slider */}
 
-        <div className="relative mt-16">
+        <div className="relative mt-6 sm:mt-10 lg:mt-14">
 
           {/* Left Arrow */}
 
           <button
             onClick={prevSlide}
             className="
-            absolute
-            left-[-5px]
-            md:left-[-20px]
-            top-1/2
-            -translate-y-1/2
-            z-30
-            w-10
-            h-10
-            md:w-12
-            md:h-12
-            rounded-full
-            bg-[#E8E8E8CC]
-            shadow-[0px_0px_4px_0px_#00000040]
-            text-[#696969CC]
-            text-3xl
-          "
-          >
-          <MdOutlineArrowBackIos />
-          </button>
+    absolute
+    left-[-5px]
+    md:left-[-20px]
+    top-1/2
+    -translate-y-1/2
+    z-30
+    flex
+    items-center
+    justify-center
 
+    w-10
+    h-10
+    md:w-12
+    md:h-12
+
+    rounded-full
+
+    bg-[#E8E8E8CC]
+
+    shadow-[0px_0px_4px_0px_#00000040]
+
+    text-[#696969CC]
+  "
+          >
+            <MdOutlineArrowBackIos className="text-[18px] md:text-[28px] " />
+          </button>
 
 
           {/* Cards */}
@@ -183,7 +189,7 @@ const UseCases = () => {
                 className="
                 hidden
                 lg:block
-
+                p-2
                 w-[301px]
                 h-[344px]
 
@@ -203,20 +209,20 @@ const UseCases = () => {
                   alt=""
                   className="
                   w-full
-                  h-[150px]
+                  h-[185px]
                   object-cover
                 "
                 />
 
-                <div className="p-5">
+                <div className="p-3">
 
-                  <h3 className="text-white text-[24px]">
+                  <h3 className="bg-[linear-gradient(11.26deg,#FFFFFF_26.98%,#999999_91.45%)] bg-clip-text text-transparent  text-base">
 
                     {cards[leftIndex].title}
 
                   </h3>
 
-                  <p className="text-[#8A8A8A] mt-3 text-sm leading-6">
+                  <p className="text-[#DADADA] font-[400] mt-2 text-xs leading-4">
 
                     {cards[leftIndex].description}
 
@@ -261,10 +267,14 @@ const UseCases = () => {
                 w-full
 
                 max-w-[320px]
-
+                min-h-[350px] p-2
+                min-[400]:h-[390px]
                 sm:max-w-[420px]
-
-                lg:max-w-[450px]
+                sm:min-h-[480px]
+                lg:max-w-[380px]
+                lg:min-h-[520px]
+                 xl:max-w-[450px]
+                xl:min-h-[550px]
 
                 bg-black
 
@@ -284,8 +294,8 @@ const UseCases = () => {
                   alt=""
                   className="
                   w-full
-
-                  h-[220px]
+                  h-[160px]
+                  min-[400]:h-[220px]
 
                   sm:h-[280px]
 
@@ -296,14 +306,12 @@ const UseCases = () => {
                 />
 
 
-                <div className="p-6 lg:p-8">
+                <div className="p-3 lg:p-6">
 
                   <h3 className="
-                  text-white
-
-                  text-[26px]
-
-                  lg:text-[36px]
+                  bg-[linear-gradient(11.26deg,#FFFFFF_26.98%,#999999_91.45%)] bg-clip-text text-transparent 
+                  text-xl
+                  lg:text-2xl
                 ">
 
                     {cards[active].title}
@@ -313,14 +321,14 @@ const UseCases = () => {
 
                   <p
                     className="
-                    mt-4
+                    mt-3
 
-                    text-[#9C9C9C]
+                    text-[#DADADAE5]
 
-                    text-sm
-                    lg:text-[18px]
+                    text-sm font-[400]
+                    lg:text-base
 
-                    leading-7
+                    leading-5
                   "
                   >
 
@@ -365,7 +373,7 @@ const UseCases = () => {
 
                 w-[301px]
                 h-[344px]
-
+                p-2
                 bg-black
 
                 border
@@ -382,20 +390,20 @@ const UseCases = () => {
                   alt=""
                   className="
                   w-full
-                  h-[150px]
+                  h-[185px]
                   object-cover
                 "
                 />
 
-                <div className="p-5">
+                <div className="p-3">
 
-                  <h3 className="text-white text-[24px]">
+                  <h3 className="bg-[linear-gradient(11.26deg,#FFFFFF_26.98%,#999999_91.45%)] bg-clip-text text-transparent  text-base">
 
                     {cards[rightIndex].title}
 
                   </h3>
 
-                  <p className="text-[#8A8A8A] mt-3 text-sm leading-6">
+                  <p className="text-[#DADADA] font-[400] mt-2 text-xs leading-4">
 
                     {cards[rightIndex].description}
 
@@ -421,28 +429,29 @@ const UseCases = () => {
             right-[-5px]
             md:right-[-20px]
 
-            top-1/2
-            -translate-y-1/2
+           top-1/2
+    -translate-y-1/2
+    z-30
 
-            z-30
+    flex
+    items-center
+    justify-center
 
-            w-10
-            h-10
+    w-10
+    h-10
+    md:w-12
+    md:h-12
 
-            md:w-12
-            md:h-12
+    rounded-full
 
-            rounded-full
+    bg-[#E8E8E8CC]
 
-            bg-[#E8E8E8]
+    shadow-[0px_0px_4px_0px_#00000040]
 
-            shadow-lg
-
-            text-[#8B8B8B]
-            text-3xl
+    text-[#696969CC]
           "
           >
-            <MdOutlineArrowForwardIos />
+            <MdOutlineArrowForwardIos className="text-[18px] md:text-[28px] " />
           </button>
 
         </div>

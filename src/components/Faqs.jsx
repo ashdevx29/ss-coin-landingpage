@@ -39,7 +39,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="bg-black max-w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 py-8 md:py-14">
+    <section id="faq" className="bg-black max-w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 py-8 md:py-14">
       <div className="max-w-4xl mx-auto">
 
         {/* Heading */}
