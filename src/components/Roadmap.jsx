@@ -1,9 +1,11 @@
-const roadmapData = [
+import React from "react";
+
+const roadmap = [
   {
     phase: "PHASE 1",
     title: "Foundation & Development",
     side: "left",
-    points: [
+    items: [
       "Project Concept Finalization",
       "Smart Contract Development & Audit",
       "Website Launch",
@@ -16,7 +18,7 @@ const roadmapData = [
     phase: "PHASE 2",
     title: "Presale & Community Growth",
     side: "right",
-    points: [
+    items: [
       "SSC Token Generation Event",
       "ICO / Presale Launch",
       "Marketing Campaigns",
@@ -29,12 +31,12 @@ const roadmapData = [
     phase: "PHASE 3",
     title: "Ecosystem Development",
     side: "left",
-    points: [
+    items: [
       "Payment Gateway Development",
       "Merchant Onboarding",
       "E-Commerce Integration",
       "QR Payment System",
-      "Reward & Loyalty Program",
+      "Rewards & Loyalty Program",
       "Strategic Business Partnerships",
     ],
   },
@@ -42,11 +44,11 @@ const roadmapData = [
     phase: "PHASE 4",
     title: "Exchange Expansion",
     side: "right",
-    points: [
+    items: [
       "DEX Listing",
       "CEX Listing Applications",
       "Liquidity Pool Expansion",
-      "Trading Campaigns Release",
+      "Trading Campaigns",
       "Global Community Growth",
       "Market Making Partnerships",
     ],
@@ -55,7 +57,7 @@ const roadmapData = [
     phase: "PHASE 5",
     title: "Mobile & Global Adoption",
     side: "left",
-    points: [
+    items: [
       "SSC Mobile Wallet Launch",
       "Advanced Payment Solutions",
       "International Merchant Network",
@@ -66,157 +68,204 @@ const roadmapData = [
   },
 ];
 
-const Roadmap = () => {
+export default function Roadmap() {
   return (
-    <section className="overflow-hidden py-24 bg-black">
-      <div className="mx-auto px-4 max-w-[1440px] lg:px-8">
+    <section className="bg-black text-white py-8 md:py-14 overflow-hidden">
+      <div className="max-w-full  px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
 
-        {/* Heading */}
-        <div className="mb-24 text-center">
-          <h2 className="text-white text-[34px] font-light font-[Gilroy] md:text-[30px] lg:text-[48px]">
-            Strategic Development{" "}
-           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F0B100] to-[#D08700]">
-  Roadmap
-</span>
-          </h2>
+        <h2 className="text-center text-2xl sm:text-4xl md:text-5xl text-[#ffffff] font-[400]">
+          Strategic Development{" "}
+          <span className="bg-[linear-gradient(90deg,#F0B100_0%,#D08700_100%)]
+              bg-clip-text
+              text-transparent">Roadmap</span>
+        </h2>
 
-          <p className="mt-6 mx-auto max-w-[700px] text-[#D8D8D8] text-sm font-[Poppins] md:text-base lg:text-[14px]">
-            Our roadmap reflects a disciplined, milestone-driven approach
-            to building a sustainable and globally scalable payment ecosystem.
-          </p>
-        </div>
+        <p className="text-center text-[#D8D8D8] font-['Poppins'] text-sm font-[400] mt-3 md:mt-5 max-w-2xl mx-auto">
+          Our roadmap reflects a disciplined milestone-driven approach
+          to building a sustainable and globally scalable payment ecosystem.
+        </p>
 
-        {/* Desktop Timeline */}
-        <div className="relative hidden lg:block">
+        <div className="relative max-w-[1202px] hidden md:block font-['Inter'] mx-auto mt-12">
 
-          {/* Center Line */}
-          <div className="absolute left-1/2 top-0 h-full w-[4px] bg-[#D9A11D] -translate-x-1/2"></div>
-
-          <div className="space-y-[-200px]">
-
-            {roadmapData.map((item, index) => (
-              <div
-                key={index}
-                className={`flex ${
-                  item.side === "left"
-                    ? "justify-start"
-                    : "justify-end"
+          {/* Center line */}
+          <div
+            className="
+              absolute
+              left-1/2
+              -translate-x-1/2
+              top-[200px] lg:top-[200px] xl:top-[180px]
+              bottom-[180px] lg:bottom-[200px] xl:bottom-[180px]
+              w-[4px]
+              bg-[linear-gradient(122.92deg,rgba(255,216,72,0.7)_0%,rgba(240,177,0,0.7)_60.48%)]
+            "
+          />
+          {roadmap.map((item, index) => (
+            <div
+              key={index}
+              className={`relative flex items-center md:mb-0 mb-20 ${item.side === "left"
+                ? "justify-start"
+                : "justify-end"
                 }`}
+            >
+
+              {/* Dot */}
+              <div className="absolute left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-[radial-gradient(circle_at_center,_#FFFFFF_0%,_#F6BC00_48.08%,_#FDC700_100%)]" />
+
+              {/* Horizontal connector */}
+              <div
+                className={`absolute top-1/2 h-[1px] min-w-[40px]
+              ${item.side === "left"
+                    ? "left-[22%] right-1/2"
+                    : "left-1/2 right-[22%] "
+                  }
+              bg-[repeating-linear-gradient(to_right,rgba(253,199,0,0.7)_0_8px,transparent_8px_14px)]
+              `}
+              />
+
+              <div
+                className={`relative rounded-xl p-[3px] ${item.side === "left"
+                  ? "bg-[linear-gradient(90deg,rgba(0,0,0,0)_75.19%,rgba(240,177,0,0.7)_80.61%,rgba(240,177,0,0.7)_100%)]"
+                  : "bg-[linear-gradient(270deg,rgba(0,0,0,0)_75.19%,rgba(240,177,0,0.7)_80.61%,rgba(240,177,0,0.7)_100%)]"
+                  }`}
               >
-                <div className="relative w-[540px]">
-
-                  {/* Connector */}
+                <div className="bg-[#000] p-2 rounded-xl">
                   <div
-                    className={`absolute top-1/2 -translate-y-1/2 ${
-                      item.side === "left"
-                        ? "right-[-130px]"
-                        : "left-[-130px]"
-                    }`}
+                    className={`
+                     w-[300px] lg:w-[360px] xl:w-[420px]
+                      rounded-[8px]
+                      p-[2px]
+                      bg-[linear-gradient(152.14deg,rgba(253,199,0,0.7)_9.96%,rgba(240,177,0,0.406)_100%)]
+                      ${item.side === "left"
+                        ? "mr-auto"
+                        : "ml-auto"
+                      }
+                    `}
                   >
-                    <div className="w-[130px] border-t border-dashed border-[#D9A11D]" />
-                  </div>
+                    <div className="rounded-[8px] bg-[#050505] p-5 lg:p-8">
 
-                  {/* Timeline Dot */}
-                  <div
-                    className={`absolute top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#F0B100]
-                    shadow-[0_0_25px_rgba(240,177,0,0.9)]
-                    ${
-                      item.side === "left"
-                        ? "right-[-145px]"
-                        : "left-[-145px]"
-                    }`}
-                  />
+                    
+                      <h4 className="text-lg lg:text-xl font-[600] text-white mb-3">
+                        {item.phase}
+                      </h4>
 
-                  {/* Gold Outer Frame */}
-                  <div
-                    className={`absolute w-full h-full border-[8px] border-[#D9A11D] rounded-[22px]
-                    ${
-                      item.side === "left"
-                        ? "-top-4 left-4"
-                        : "-top-4 -left-4"  
-                    }`}
-                  />
+                      <h3 className="text-xl lg:text-2xl text-[#ffffff] font-semibold mb-5">
+                        {item.title}
+                      </h3>
 
-                  {/* Main Card */}
-                  <div className="z-10 relative p-12 min-h-[340px] bg-black border-[#D9A11D] rounded-[18px] border lg:min-h-[260px]">
+                      <ul className="space-y-3">
+                        {item.items.map((list, i) => (
+                          <li
+                            key={i}
+                            className="text-[#99A1AF] text-sm font-[400] flex items-center gap-3"
+                          >
+                            <span className="w-2 h-2 rounded-full bg-[#F0B100]"></span>
+                            {list}
+                          </li>
+                        ))}
+                      </ul>
 
-                    <h4 className="text-white text-[22px] font-bold uppercase">
-                      {item.phase}
-                    </h4>
-
-                    <h3 className="mt-5 text-white text-[24px] font-semibold">
-                      {item.title}
-                    </h3>
-
-                    <ul className="mt-8 space-y-4">
-                      {item.points.map((point, i) => (
-                        <li
-                          key={i}
-                          className="flex items-start gap-3 text-[#9CA3AF] text-[18px]"
-                        >
-                          <span className="mt-[2px] text-[#F0B100]">
-                            •
-                          </span>
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
+                    </div>
 
                   </div>
                 </div>
               </div>
-            ))}
-
-          </div>
+            </div>
+          ))}
         </div>
 
-        {/* Mobile Version */}
-        <div className="relative lg:hidden">
+       {/* Mobile Timeline */}
+<div className="md:hidden relative mt-14">
 
-          {/* Vertical Line */}
-          <div className="absolute left-4 top-0 h-full w-[3px] bg-[#D9A11D]" />
+  {/* Vertical Line */}
+  <div
+    className="
+      absolute
+      left-2 
+     top-[145px] sm:top-[170px]
+              bottom-[145px] sm:bottom-[170px]
+      w-[4px]
+      bg-[linear-gradient(122.92deg,rgba(255,216,72,0.7)_0%,rgba(240,177,0,0.7)_60.48%)]
+    "
+  />
 
-          <div className="space-y-10">
+  {roadmap.map((item, index) => (
+    <div key={index} className="relative pl-12 sm:pl-16 mb-10">
 
-            {roadmapData.map((item, index) => (
-              <div key={index} className="relative pl-12">
+      {/* Dot */}
+      <div
+        className="
+          absolute
+          left-[-2px]
+          top-1/2
+          -translate-y-1/2
+          w-6
+          h-6
+          rounded-full
+          bg-[radial-gradient(circle_at_center,_#FFFFFF_0%,_#F6BC00_48.08%,_#FDC700_100%)]
+        "
+      />
 
-                {/* Dot */}
-                <div className="absolute left-0 top-7 w-8 h-8 bg-[#F0B100] rounded-full" />
+      {/* Connector */}
+      <div
+        className="
+          absolute
+          left-[26px]
+          top-1/2
+          -translate-y-1/2
+          w-5 sm:w-8
+          h-[1px]
+          bg-[repeating-linear-gradient(to_right,rgba(253,199,0,0.7)_0_8px,transparent_8px_14px)]
+        "
+      />
 
-                <div className="p-6 bg-black border-[#D9A11D] rounded-2xl border">
+      {/* Card */}
+      <div className="relative rounded-xl p-[3px]
+        bg-[linear-gradient(270deg,rgba(0,0,0,0)_75.19%,rgba(240,177,0,0.7)_80.61%,rgba(240,177,0,0.7)_100%)]">
 
-                  <h4 className="text-white text-lg font-bold">
-                    {item.phase}
-                  </h4>
+        <div className="bg-[#000] p-2 rounded-xl">
 
-                  <h3 className="mt-3 text-white text-2xl font-semibold">
-                    {item.title}
-                  </h3>
+          <div className="
+            rounded-[8px]
+            p-[2px]
+            bg-[linear-gradient(152.14deg,rgba(253,199,0,0.7)_9.96%,rgba(240,177,0,0.406)_100%)]
+          ">
 
-                  <ul className="mt-5 space-y-3">
-                    {item.points.map((point, i) => (
-                      <li
-                        key={i}
-                        className="flex gap-2 text-[#9CA3AF] text-sm"
-                      >
-                        <span className="text-[#F0B100]">•</span>
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
+            <div className="rounded-[8px] bg-[#050505] p-5">
 
-                </div>
+              <h4 className="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-3">
+                {item.phase}
+              </h4>
 
-              </div>
-            ))}
+              <h3 className="text-lg sm:text-xl text-white font-semibold mb-3 sm:mb-5">
+                {item.title}
+              </h3>
 
+              <ul className="space-y-2 sm:space-y-3">
+                {item.items.map((list, i) => (
+                  <li
+                    key={i}
+                    className="text-[#99A1AF] text-xs sm:text-sm flex items-center gap-2 sm:gap-3"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-[#F0B100]" />
+                    {list}
+                  </li>
+                ))}
+              </ul>
+
+            </div>
           </div>
+
         </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+
 
       </div>
-    </section>
+    </section >
   );
-};
+}
 
-export default Roadmap;
+

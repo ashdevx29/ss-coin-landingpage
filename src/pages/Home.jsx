@@ -4,6 +4,7 @@ import Why from "../components/Why";
 import About from "../components/About";
 import UseCases from "../components/UseCases";
 import Roadmap from "../components/Roadmap";
+import Tokenomics from "../components/Tokenomics"
 const Home = () => {
   return (
     <>
@@ -13,6 +14,7 @@ const Home = () => {
       <About/>
       <UseCases/>
       <Roadmap/>
+      <Tokenomics />
     </>
   );
 };

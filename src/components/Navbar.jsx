@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
    <header className="absolute top-0 left-0 w-full z-50">
-  <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 xl:px-16">
+  <div className="max-w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
     <div className="h-[80px] md:h-[90px] lg:h-[100px] flex items-center justify-between">
           
           {/* Logo */}
@@ -64,7 +64,7 @@ const Navbar = () => {
       md:w-[120px]
       lg:w-[130px]
       xl:w-[140px]
-      bg-[#D9A11D]
+      bg-gradient-to-r from-[#F0B100] to-[#D08700]
       text-white
       text-[14px]
       lg:text-[16px]
@@ -116,7 +116,7 @@ const Navbar = () => {
   className="
     h-[50px]
     w-[180px]
-    bg-[#D89F15]
+    bg-gradient-to-r from-[#F0B100] to-[#D08700]
     text-white
     text-lg
     font-medium
