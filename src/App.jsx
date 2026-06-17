@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
-import Homepage from './Pages/Home';
+import Home from './Pages/Home';
 import Presale from './Pages/Presale';
 
 function ScrollAnimationHandler() {
@@ -54,7 +54,7 @@ function App() {
       <ScrollAnimationHandler />
       <Navbar />
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<Home />} />
         <Route path="/presale" element={<Presale />} />
       </Routes>
 
@@ -65,38 +65,3 @@ function App() {
 }
 
 export default App;
-
-
-// import Navbar from "./components/Navbar";
-// import Hero from "./components/Hero";
-// import Number from "./components/Number"
-// import Why from "./components/Why";
-// import About from "./components/About";
-// import UseCases from "./components/UseCases";
-// import Roadmap from "./components/Roadmap";
-// import Tokenomics from "./components/Tokenomics"
-// import ContractAddress from "./components/ContractAddress"
-// import Faq from "./components/Faqs"
-// import Join from "./components/Join"
-// import Footer from "./components/Footer"
-// function App() {
-
-//   return (
-//     <div className="bg-black">
-//       <Navbar />
-//       <Hero />
-//       <Number />
-//       <Why/>
-//       <About/>
-//       <UseCases/>
-//       <Roadmap/>
-//       <Tokenomics />
-//       <ContractAddress />
-//       <Faq />
-//       <Join />
-//       <Footer />
-//     </div>
-//   );
-// }
-
-// export default App;
