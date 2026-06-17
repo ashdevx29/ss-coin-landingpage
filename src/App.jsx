@@ -8,8 +8,8 @@ import {
 } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
-import Home from './Pages/Home';
-import Presale from './Pages/Presale';
+import Home from './pages/Home';
+import Presale from './pages/Presale';
 
 function ScrollAnimationHandler() {
   const location = useLocation();
