@@ -10,19 +10,26 @@ import user2 from "../assets/hero/user2.png";
 import user3 from "../assets/hero/user3.png";
 
 const slides = [slide1, slide2, slide3];
+const allSlides = [...slides, ...slides];
 
 const users = [user1, user2, user3];
 
 export default function HeroSection() {
   const [active, setActive] = useState(0);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActive((prev) => (prev + 1) % slides.length);
-    }, 3000);
+ useEffect(() => {
+  const timer = setInterval(() => {
+    setActive((prev) => {
+      if (prev === slides.length - 1) {
+        return 0;
+      }
 
-    return () => clearInterval(timer);
-  }, []);
+      return prev + 1;
+    });
+  }, 3000);
+
+  return () => clearInterval(timer);
+}, []);
 
   return (
     <section className="bg-black pt-[100px] w-full overflow-hidden relative">
@@ -121,7 +128,7 @@ export default function HeroSection() {
 
             {/* Buy SSC Now */}
 
-            <a href="/preslae" className="group relative w-[160px] h-[48px]">
+            <a href="/presale" className="group relative w-[160px] h-[48px]">
 
               <svg
                 className="absolute inset-0"
@@ -139,6 +146,7 @@ export default function HeroSection() {
                 <path
                   d="M15 0H160V36L145 48H0V12L15 0Z"
                   fill="url(#grad)"
+                   className="group-hover:fill-[#D08700] transition-all duration-300"
                 />
               </svg>
 
@@ -188,13 +196,13 @@ export default function HeroSection() {
           <div className="overflow-hidden">
 
             <div
-              className="flex transition-all duration-700 ease-in-out"
+              className="flex transition-transform duration-700 ease-linear"
               style={{
                 transform: `translateX(-${active * 100}%)`,
               }}
             >
 
-              {slides.map((img, i) => (
+              {allSlides.map((img, i) => (
 
                 <div
                   key={i}

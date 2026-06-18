@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import SSlogo from "../assets/hero/SSlogo.png";
+import { Link } from "react-router-dom";
+
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,6 +23,7 @@ const Navbar = () => {
           
           {/* Logo */}
           <div className="flex-shrink-0">
+          <Link to="/">
            <img
   src={SSlogo}
   alt="SS Coin"
@@ -32,6 +35,7 @@ const Navbar = () => {
     xl:w-[110px]
   "
 />
+</Link>
           </div>
 
           {/* Desktop Menu */}

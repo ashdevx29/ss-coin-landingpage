@@ -1,5 +1,5 @@
 import ctaBg from "../assets/join.jpg";
-
+import { Link } from "react-router-dom";
 export default function CTASection() {
   return (
     <section className="bg-black max-w-full font-['Inter'] px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 py-6 md:py-12">
@@ -42,43 +42,52 @@ export default function CTASection() {
 
           <div className="mt-8 flex flex-wrap gap-4 justify-center">
             {/* Buy Button */}
-            <button
-              className="
-      min-w-[180px]
-      px-7
-      py-3
-      rounded-[8px]
-      bg-white
-      text-[#F0B100]
-      text-sm md:text-base
-      font-[500]
-      hover:scale-105
-      transition
-    "
-            >
-              Buy SSC Now
-            </button>
+            <div className="flex flex-wrap gap-4">
 
-            {/* Visit Button */}
-            <button
-              className="
-      min-w-[180px]
-      px-7
-      py-3
-      rounded-xl
-      border
-      border-white
-      bg-transparent
-      backdrop-blur-md
-      text-white
-      font-medium
-      hover:bg-black
-      transition
-    "
-            >
-              Visit sscoin.io
-            </button>
-          </div>
+  {/* Buy SSC Now */}
+  <Link to="/presale">
+    <button
+      className="
+        min-w-[180px]
+        px-7
+        py-3
+        rounded-[8px]
+        bg-white
+        text-[#F0B100]
+        text-sm md:text-base
+        font-[500]
+        hover:scale-105
+        transition
+      "
+    >
+      Buy SSC Now
+    </button>
+  </Link>
+
+  {/* Visit Button */}
+  <Link to="/">
+    <button
+      className="
+        min-w-[180px]
+        px-7
+        py-3
+        rounded-xl
+        border
+        border-white
+        bg-transparent
+        backdrop-blur-md
+        text-white
+        font-medium
+        hover:bg-black
+        transition
+      "
+    >
+      Whitepaper
+    </button>
+  </Link>
+
+</div>
+</div>
         </div>
       </div>
     </section>

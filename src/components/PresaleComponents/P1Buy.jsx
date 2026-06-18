@@ -20,7 +20,7 @@ export default function TokenSaleSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-6 items-center">
 
           {/* LEFT */}
-          <div className=" order-2 lg:order-1 flex flex-col items-center text-center lg:items-start lg:text-left">
+          <div className=" order-1 lg:order-1 flex flex-col items-center text-center lg:items-start lg:text-left">
 
             <div
               className="inline-block px-3 py-1 text-[#FFCC66] text-sm md:text-base rounded-full mb-2 md:mb-4"
@@ -41,7 +41,7 @@ SS COIN: Presale is Live.
             <div className="flex flex-wrap justify-center gap-6 mt-5">
            
 
-             <a href="/" className="group relative w-[160px] h-[48px]">
+             <a href="/presale/?=joinpresale" className="group relative w-[160px] h-[48px]">
 
               <svg
                 className="absolute inset-0"
@@ -59,6 +59,7 @@ SS COIN: Presale is Live.
                 <path
                   d="M15 0H160V36L145 48H0V12L15 0Z"
                   fill="url(#grad)"
+                  className="group-hover:fill-[#D08700] transition-all duration-300"
                 />
               </svg>
 
@@ -72,7 +73,7 @@ SS COIN: Presale is Live.
           </div>
 
           {/* RIGHT */}
-          <div className=" order-1 lg:order-2 relative w-full max-w-[580px] mx-auto">
+          <div className=" order-2 lg:order-2 relative w-full max-w-[580px] mx-auto">
 
 
 
@@ -302,6 +303,7 @@ SS COIN: Presale is Live.
                 <path
                   d="M15 0H160V36L145 48H0V12L15 0Z"
                   fill="url(#grad)"
+                  className="group-hover:fill-[#D08700] transition-all duration-300"
                 />
               </svg>
 
