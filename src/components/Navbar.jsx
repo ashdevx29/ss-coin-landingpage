@@ -17,7 +17,8 @@ const Navbar = () => {
 ];
 
   return (
-   <header className="absolute top-0 left-0 w-full z-50">
+  //  <header className="absolute top-0 left-0 w-full z-50">
+  <header className=" w-full z-50">
   <div className="max-w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
     <div className="h-[80px] md:h-[90px] lg:h-[100px] flex items-center justify-between">
           

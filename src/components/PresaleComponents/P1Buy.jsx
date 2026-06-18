@@ -8,14 +8,14 @@ export default function TokenSaleSection() {
 
   return (
     <section id="joinpresale"
-      className="relative py-8 md:py-12 lg:py-16 xl:py-20 text-white"
+      className="relative py-8 md:py-10 lg:py-14 text-white"
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="max-w-full mt-24 px-3 font-['Poppins'] sm:px-4 md:px-6 lg:px-8 xl:px-12">
+      <div className="max-w-full  px-3 font-['Poppins'] sm:px-4 md:px-6 lg:px-8 xl:px-12">
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-6 items-center">
 
