@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { MdOutlineArrowBackIos } from "react-icons/md";
 
-import img1 from "../assets/images/ecommerce.png";
-import img2 from "../assets/images/gateway.png";
-import img3 from "../assets/images/merchant.png";
+import img1 from "../assets/Images/ecommerce.png";
+import img2 from "../assets/Images/gateway.png";
+import img3 from "../assets/Images/merchant.png";
 
 const cards = [
   {
@@ -470,9 +470,9 @@ export default UseCases;
 // import { useState } from "react";
 // import { motion, AnimatePresence } from "framer-motion";
 
-// import img1 from "../assets/images/ecommerce.png";
-// import img2 from "../assets/images/gateway.png";
-// import img3 from "../assets/images/merchant.png";
+// import img1 from "../assets/Images/ecommerce.png";
+// import img2 from "../assets/Images/gateway.png";
+// import img3 from "../assets/Images/merchant.png";
 
 // const cards = [
 //   {
