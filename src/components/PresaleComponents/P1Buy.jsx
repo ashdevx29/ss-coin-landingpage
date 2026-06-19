@@ -56,7 +56,7 @@ export default function TokenSaleSection() {
     const usdtNum = parseFloat(usdt) || 0;
     const tokenPrice = parseFloat(price);
     if (tokenPrice === 0) return (0).toFixed(6);
-    return (1 / tokenPrice).toFixed(6);
+    return (usdt / tokenPrice).toFixed(6);
   };
 
   const [usdtPlaceholder, setUsdtPlaceholder] = useState("USDT YOU PAY");
@@ -109,6 +109,9 @@ export default function TokenSaleSection() {
       }
     }
   };
+
+  console.log("USDT Amount:", usdtAmount);
+  console.log("Token Amount:", tokenAmount);
 
   // Fetch USDT balance
   const fetchUsdtBalance = async () => {
