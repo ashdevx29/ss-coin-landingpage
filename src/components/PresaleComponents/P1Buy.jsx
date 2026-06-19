@@ -279,10 +279,18 @@ export default function TokenSaleSection() {
       });
     } catch (error) {
       console.error("Error approving USDT:", error);
-      const errorMessage =
-        error.code === 4001
-          ? "Transaction rejected by user"
-          : `Failed to approve USDT`;
+      let errorMessage = "Failed to approve USDT";
+      
+      if (error.code === 4001 || error?.message?.includes("rejected")) {
+        errorMessage = "Transaction rejected by user";
+      } else if (error.reason) {
+        errorMessage = error.reason;
+      } else if (error.data && error.data.message) {
+        errorMessage = error.data.message;
+      } else if (error.message) {
+        errorMessage = error.message.slice(0, 50) + "...";
+      }
+      
       setError(errorMessage);
       toast.error(errorMessage, {
         position: "top-right",
@@ -344,14 +352,26 @@ export default function TokenSaleSection() {
         signer,
       );
       const amount = ethers.parseUnits(usdtAmount, 18);
-      const tx = await presaleContract.buyWithUSDT(amount);
+
+      let gasLimit;
+      try {
+        const estimatedGas = await presaleContract.buyWithUSDT.estimateGas(amount);
+        gasLimit = (estimatedGas * 120n) / 100n; // 20% buffer
+      } catch (gasError) {
+        console.warn("Gas estimation failed. Falling back to manual limit.", gasError);
+        gasLimit = 500000n; // Fallback gas limit
+      }
+
+      const tx = await presaleContract.buyWithUSDT(amount, { gasLimit });
       await tx.wait();
+      
       setUsdtAmount("");
       setTokenAmount("");
       await Promise.all([
         fetchPresaleInfo(),
         fetchUsdtBalance(),
         fetchSMCBalance(),
+        checkAllowance(), // re-check allowance
       ]);
 
       toast.success("Purchase successful!", {
@@ -360,10 +380,18 @@ export default function TokenSaleSection() {
       });
     } catch (error) {
       console.error("Error buying with USDT:", error);
-      const errorMessage =
-        error.code === 4001
-          ? "Transaction rejected by user"
-          : `Failed to complete purchase`;
+      let errorMessage = "Failed to complete purchase";
+      
+      if (error.code === 4001 || error?.message?.includes("rejected")) {
+        errorMessage = "Transaction rejected by user";
+      } else if (error.reason) {
+        errorMessage = error.reason;
+      } else if (error.data && error.data.message) {
+        errorMessage = error.data.message;
+      } else if (error.message) {
+        errorMessage = error.message.slice(0, 50) + "..."; // avoid very long messages
+      }
+      
       setError(errorMessage);
       toast.error(errorMessage, {
         position: "top-right",
