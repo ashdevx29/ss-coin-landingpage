@@ -4,7 +4,7 @@ const stats = [
     label: "Total Supply",
   },
   {
-    value: "$0.12",
+    value: "$0.050",
     label: "Token Price",
   },
   {

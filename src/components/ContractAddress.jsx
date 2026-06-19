@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MdContentCopy } from "react-icons/md";
 
 export default function ContractAddress() {
-  const address = "0xA1B2C3D4E5F60718293A4B5C6D7E8F9012345678";
+  const address = "0x53de3640f6256dfc00bca2cac7c7442194e06685";
 
   const [copied, setCopied] = useState(false);
 

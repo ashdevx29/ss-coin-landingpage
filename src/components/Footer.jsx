@@ -18,7 +18,7 @@ const platformLinks = [
 const resourceLinks = [
     {
         name: "Whitepaper",
-        link: "/",
+        link: "https://sscoin.gitbook.io/sscoin-docs/",
         newTab: true,
     },
     {

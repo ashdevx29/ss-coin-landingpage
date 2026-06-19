@@ -232,6 +232,7 @@ export default function TokenSaleSection() {
 
   // Approve USDT
   const approveUSDT = async () => {
+    console.log("APPROVE USDT BUTTON CLICKED!");
     if (!address) {
       setError("Please connect your wallet");
       toast.error("Please connect your wallet", {
@@ -375,7 +376,7 @@ export default function TokenSaleSection() {
 
   // Countdown timer logic
   const calculateTimeLeft = () => {
-    const endDate = new Date("2026-04-20T09:00:00+05:30").getTime();
+    const endDate = new Date("2027-04-20T09:00:00+05:30").getTime();
     const now = new Date().getTime();
     const difference = endDate - now;
 
@@ -759,11 +760,13 @@ export default function TokenSaleSection() {
                       {/* Whitepaper */}
 
                       <button
-                        className="group relative w-[160px] h-[48px] block transition-all duration-300 hover:scale-105"
+                        type="button"
+                        className={`group relative w-[160px] h-[48px] block transition-all duration-300 ${loading ? "opacity-70 cursor-not-allowed" : "hover:scale-105"}`}
                         onClick={isApproved ? buyWithUSDT : approveUSDT}
+                        disabled={loading}
                       >
                         <svg
-                          className="absolute inset-0"
+                          className="absolute inset-0 pointer-events-none"
                           width="160"
                           height="48"
                           viewBox="0 0 160 48"
@@ -776,7 +779,7 @@ export default function TokenSaleSection() {
                           />
                         </svg>
 
-                        <span className="absolute inset-0 flex items-center justify-center text-[#F0B100] group-hover:text-black font-medium transition-all duration-300">
+                        <span className="absolute inset-0 flex items-center justify-center text-[#F0B100] group-hover:text-black font-medium transition-all duration-300 pointer-events-none">
                           {loading
                             ? "Processing..."
                             : isApproved

@@ -169,8 +169,9 @@ export default function HeroSection() {
               </a>
 
               <a
-                href="/"
-                className="group relative w-[170px] h-[52px]"
+                href="https://sscoin.gitbook.io/sscoin-docs/"
+                className="group relative w-[170px] h-[52px]" target="_blank"
+  rel="noopener noreferrer" 
               >
                 <svg
                   className="absolute inset-0"

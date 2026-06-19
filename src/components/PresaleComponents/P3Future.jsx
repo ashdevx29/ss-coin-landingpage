@@ -29,7 +29,8 @@ export default function FuturePayments() {
               <div className="flex flex-wrap justify-left gap-6 mt-5">
            
 
-             <a href="/" className="group relative w-[160px] h-[48px]">
+             <a href="https://sscoin.gitbook.io/sscoin-docs/ " className="group relative w-[160px] h-[48px] " target="_blank"
+  rel="noopener noreferrer" >
 
               <svg
                 className="absolute inset-0"

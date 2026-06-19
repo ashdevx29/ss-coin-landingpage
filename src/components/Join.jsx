@@ -65,7 +65,8 @@ export default function CTASection() {
   </Link>
 
   {/* Visit Button */}
-  <Link to="/">
+  <Link to="https://sscoin.gitbook.io/sscoin-docs/" target="_blank"
+  rel="noopener noreferrer" >
     <button
       className="
         min-w-[180px]
