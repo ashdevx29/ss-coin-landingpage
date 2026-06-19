@@ -2,17 +2,33 @@ import heroVideo from "../assets/newhero/bg-hero.mp4";
 import heroCoin from "../assets/newhero/hero-right.png";
 import coinIcon from "../assets/newhero/icon.png";
 import Header from "./Navbar";
+import icon1 from "../assets/newhero/Audited.png";
+import icon2 from "../assets/newhero/secure.png";
+import icon3 from "../assets/newhero/kyc.png";
+
+
+import img1 from "../assets/newhero/img1.png";
+import img2 from "../assets/newhero/img2.png";
+import img3 from "../assets/newhero/img3.png";
+import img4 from "../assets/newhero/img4.png";
+import img5 from "../assets/newhero/img5.png";
+import img6 from "../assets/newhero/img6.png";
+
+
 
 const features = [
   {
+    icon: icon1,
     title: "Audited",
     subtitle: "Smart Contract",
   },
   {
+    icon: icon2,
     title: "100 % Secure",
     subtitle: "Decentralized",
   },
   {
+    icon: icon3,
     title: "KYC Verified",
     subtitle: "Trusted Project",
   },
@@ -20,31 +36,37 @@ const features = [
 
 const stats = [
   {
+    img: img1,
     value: "24M",
     label: "Total Supply",
     desc: "Fixed and Transparent",
   },
   {
+    img: img2,
     value: "500k+",
     label: "Global Community",
     desc: "Growing Everyday",
   },
   {
+    img: img3,
     value: "10k+",
     label: "Merchants",
     desc: "Accepting SSC",
   },
   {
+    img: img4,
     value: "100k+",
     label: "Wallet Users",
     desc: "Worldwide",
   },
   {
+    img: img5,
     value: "1M+",
     label: "Transactions",
     desc: "On Chain",
   },
   {
+    img: img6,
     value: "24/7",
     label: "Support",
     desc: "Always Here",
@@ -80,12 +102,12 @@ export default function HeroSection() {
       {/* Hero Content */}
       <div className="relative z-20 max-w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 pt-12 lg:pt-16">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-6 xl:gap-12 items-center">
 
           {/* Left */}
           <div className="max-w-[700px]">
 
-            <div className="inline-flex items-center gap-3 mb-5">
+            <div className="inline-flex items-center gap-3 mb-3 lg:mb-5">
 
               <span className="border border-[#F0B100] rounded-md px-3 py-1 text-xs font-semibold bg-gradient-to-r from-[#F0B100] to-[#D08700] bg-clip-text text-transparent">
                 BEP 20
@@ -97,7 +119,7 @@ export default function HeroSection() {
 
             </div>
 
-            <h1 className="text-white text-4xl md:text-6xl xl:text-7xl leading-[1.05] font-light">
+            <h2 className="text-white text-4xl md:text-6xl lg:text-5xl xl:text-7xl leading-[1.05] font-light">
 
               <span className="block bg-gradient-to-r from-[#F0B100] to-[#D08700] bg-clip-text text-transparent">
                 One Transaction
@@ -105,16 +127,16 @@ export default function HeroSection() {
 
               Infinite Possibilities
 
-            </h1>
+            </h2>
 
-            <p className="text-[#D8D8D8] text-base lg:text-lg max-w-[450px] leading-8 mt-6">
+            <p className="text-[#D8D8D8] text-base lg:text-lg max-w-[450px] leading-8 mt-4 lg:mt-6">
               SS Coin (SSC) is a BEP-20 utility token enabling secure,
               instant e-commerce and global payments.
             </p>
 
             {/* Buttons */}
 
-            <div className="flex flex-wrap gap-5 mt-8">
+            <div className="flex flex-wrap gap-5 mt-5 lg:mt-8">
 
               <a
                 href="/presale"
@@ -175,7 +197,7 @@ export default function HeroSection() {
 
             {/* Features */}
 
-            <div className="flex flex-wrap gap-4 mt-10">
+            <div className="flex flex-wrap gap-2 xl:gap-4 mt-6 lg:mt-10">
 
               {features.map((item, index) => (
 
@@ -184,12 +206,12 @@ export default function HeroSection() {
                   className="rounded-xl p-[1px] bg-gradient-to-r from-[#F0B100] to-[#D08700]"
                 >
 
-                  <div className="bg-black rounded-xl px-4 py-3">
+                  <div className="bg-black rounded-xl px-2 xl:px-4 py-[5px] xl:py-3">
 
                     <div className="flex items-center gap-3">
 
                       <img
-                        src={coinIcon}
+                        src={item.icon}
                         className="w-10 h-10"
                         alt=""
                       />
@@ -242,50 +264,73 @@ export default function HeroSection() {
 
               {stats.map((item, index) => (
 
+
+
                 <div
                   key={index}
                   className="
-                  bg-black
-                  px-4 py-6
-                  flex flex-col sm:flex-row
-                  items-center
-                  justify-center
-                  gap-3
-                  text-center sm:text-left
-                  shadow-[inset_0px_0px_60px_0px_#F0B1002E]
-                  "
+    relative
+    bg-black
+    px-4 py-6
+    flex items-center
+    gap-3
+    shadow-[inset_0px_0px_60px_0px_#F0B1002E]
+
+    after:content-['']
+    after:absolute
+    after:top-0
+    after:right-0
+    after:w-[1px]
+    after:h-full
+    after:bg-[linear-gradient(180deg,#000000_0%,rgba(253,199,0,0.44)_45.68%,#000000_100%)]
+
+    before:content-['']
+    before:absolute
+    before:left-0
+    before:bottom-0
+    before:w-full
+    before:h-[1px]
+    before:bg-[linear-gradient(90deg,#000000_0%,rgba(253,199,0,0.44)_45.68%,#000000_100%)]
+  "
                 >
+                  {/* Image - 60% */}
+                  <div className="w-[32%] flex justify-center">
+                    {/* <img
+                      src={coinIcon}
+                      className="w-14 h-14 object-contain"
+                      alt=""
+                    /> */}
+                     <img
+                      src={item.img}
+                      className="w-14 h-14 object-contain"
+                      alt=""
+                    />
+                  </div>
 
-                  <img
-                    src={coinIcon}
-                    className="w-14 h-14"
-                    alt=""
-                  />
-
-                  <div>
-
-                    <h2 className="
-                    text-2xl
-                    bg-gradient-to-r
-                    from-[#F0B100]
-                    to-[#D08700]
-                    bg-clip-text
-                    text-transparent text-right
-                    font-semibold
-                    ">
+                  {/* Content - 40% */}
+                  <div className="w-[68%] text-right">
+                    <h2
+                      className="
+      text-2xl
+      font-semibold
+      bg-gradient-to-r
+      from-[#F0B100]
+      to-[#D08700]
+      bg-clip-text
+      text-transparent
+      "
+                    >
                       {item.value}
                     </h2>
 
-                    <p className="text-[#D8D8D8] text-[10px] text-right">
+                    <p className="text-[#D8D8D8] text-[9px] xl:text-[10px] mb-0 leading-[16px]">
                       {item.label}
                     </p>
 
-                    <span className="text-[#999] text-[10px] text-right">
+                    <span className="text-[#999] text-[9px] xl:text-[10px] leading-[16px] block">
                       {item.desc}
                     </span>
-
                   </div>
-
                 </div>
 
               ))}
@@ -301,355 +346,6 @@ export default function HeroSection() {
     </section>
   );
 }
-
-
-
-
-
-// import heroVideo from "../assets/newhero/bg-hero.mp4";
-// import heroCoin from "../assets/newhero/hero-right.png";
-// import coinIcon from "../assets/newhero/icon.png";
-// import Header from "./Navbar"
-// const features = [
-//   {
-//     title: "Audited",
-//     subtitle: "Smart Contract",
-//   },
-//   {
-//     title: "100 % Secure",
-//     subtitle: "Decentralized",
-//   },
-//   {
-//     title: "KYC Verified",
-//     subtitle: "Trusted Project",
-//   },
-// ];
-
-// const stats = [
-//   {
-//     value: "24M",
-//     label: "Total Supply",
-//     desc: "Fixed and Transparent",
-//   },
-//   {
-//     value: "500k+",
-//     label: "Global Community",
-//     desc: "Growing Everyday",
-//   },
-//   {
-//     value: "10k+",
-//     label: "Merchants ",
-//     desc: "Accepting SSC",
-//   },
-//   {
-//     value: "100k+",
-//     label: "wallet Users",
-//     desc: " Worldwide",
-//   },
-//   {
-//     value: "1M+",
-//     label: "Transactions",
-//     desc: "On Chain",
-//   },
-//   {
-//     value: "24/7",
-//     label: "Support",
-//     desc: "Always Here",
-//   },
-// ];
-
-// export default function HeroSection() {
-//   return (
-//     <section className="relative overflow-hidden font-['Poppins'] py-14 bg-black">
-//       <video
-//         autoPlay
-//         muted
-//         loop
-//         playsInline
-//         className="absolute inset-0 w-full h-full object-cover"
-//       >
-//         <source src={heroVideo} type="video/mp4" />
-//       </video>
-
-//       <Header />
-
-
-
-//       <div className="relative max-w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
-
-//         {/* Top Hero */}
-//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-
-//           {/* Left Side */}
-//           <div className="max-w-[680px]">
-
-//             {/* Badge */}
-//             <div className="inline-flex items-center gap-2 mb-3">
-
-//               <span className="bg-gradient-to-r from-[#F0B100] to-[#D08700] bg-clip-text text-transparent border border-[#F0B100] text-black text-[11px] font-semibold px-2 py-[2px] rounded">
-//                 BEP 20
-//               </span>
-
-//               <span className="text-[#D8D8D8] text-sm sm:text-base">
-//                 Binance Smart Coin
-//               </span>
-
-//             </div>
-
-//             {/* Heading */}
-
-//             <h2 className="text-2xl sm:text-4xl text-[#ffffff] lg:text-5xl xl:text-7xl  font-[400] leading-[1.05]">
-
-//               <span className="block bg-gradient-to-r from-[#F0B100] to-[#D08700] bg-clip-text text-transparent">
-//                 One Transaction{" "}
-//               </span>
-//               Infinite Possibilities
-
-//             </h2>
-
-
-//             {/* Description */}
-
-//             <p className="text-[#D8D8D8] text-sm sm:text-base  lg:text-lg mt-3 max-w-[380px] leading-8">
-//               SS Coin (SSC) is a BEP-20 utility token enabling secure,
-//               instant e-commerce and global payments
-//             </p>
-
-
-//             {/* Buttons */}
-
-
-//             <div className="flex flex-wrap font-['Inter'] justify-start item-start gap-6 mt-5">
-
-//               {/* Buy SSC Now */}
-
-//               <a
-//                 href="/presale"
-//                 className="group relative w-[160px] h-[48px]"
-//               >
-//                 <svg
-//                   className="absolute inset-0"
-//                   width="160"
-//                   height="48"
-//                   viewBox="0 0 160 48"
-//                 >
-//                   <defs>
-//                     <linearGradient id="grad" x1="0" y1="0" x2="160" y2="0">
-//                       <stop offset="0%" stopColor="#F0B100" />
-//                       <stop offset="100%" stopColor="#D08700" />
-//                     </linearGradient>
-//                   </defs>
-
-//                   <path
-//                     d="M15 0H160V36L145 48H0V12L15 0Z"
-//                     fill="url(#grad)"
-//                     className="group-hover:fill-[#D08700] transition-all duration-300"
-//                   />
-//                 </svg>
-
-//                 <span className="absolute inset-0 flex items-center justify-center text-[#ffffff] font-medium">
-//                   Buy SSC Now
-//                 </span>
-//               </a>
-
-
-
-//               {/* Whitepaper */}
-
-//               <a
-//                 href="/"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//                 className="group relative w-[160px] h-[48px] block transition-all duration-300 hover:scale-105"
-//               >
-//                 <svg
-//                   className="absolute inset-0"
-//                   width="160"
-//                   height="48"
-//                   viewBox="0 0 160 48"
-//                 >
-//                   <path
-//                     d="M15 0H160V36L145 48H0V12L15 0Z"
-//                     fill="transparent"
-//                     stroke="#F0B100"
-//                     className="group-hover:fill-[#F0B100] transition-all duration-300"
-//                   />
-//                 </svg>
-
-//                 <span className="absolute inset-0 flex items-center justify-center text-[#F0B100] group-hover:text-black font-medium transition-all duration-300">
-//                   Whitepaper
-//                 </span>
-//               </a>
-
-//             </div>
-
-
-//             {/* Features */}
-
-//             <div className="flex flex-wrap gap-2 sm:gap-4 mt-6 md:mt-10">
-
-//               {features.map((item, index) => (
-
-//                 <div
-//                   key={index}
-//                   className="relative rounded-xl p-[1px] bg-gradient-to-r from-[rgba(240,177,0,0.8)] to-[rgba(208,135,0,0.8)]"
-//                 >
-//                   <div className="rounded-[11px] sm:px-3 px-2 py-2  sm:py-3 bg-[#000000] backdrop-blur-md">
-
-//                     <div className="flex items-center gap-2 sm:gap-3">
-
-//                       <img
-//                         src={coinIcon}
-//                         className="w-7 sm:w-10 h-7 sm:h-10"
-//                         alt=""
-//                       />
-
-//                       <div>
-//                         <h4 className="text-[#D8D8D8] text-xs sm:text-sm font-[500]">
-//                           {item.title}
-//                         </h4>
-
-//                         <p className="text-[#D8D8D8] font-[400] text-[10px] sm:text-xs">
-//                           {item.subtitle}
-//                         </p>
-//                       </div>
-
-//                     </div>
-
-//                   </div>
-//                 </div>
-
-//               ))}
-
-//             </div>
-
-//           </div>
-
-
-//           {/* Right Image */}
-
-//           <div className="flex justify-center lg:justify-end">
-
-//             <img
-//               src={heroCoin}
-//               alt="SS Coin"
-//               className="w-full max-w-[786px] object-contain"
-//             />
-
-//           </div>
-
-//         </div>
-
-
-
-//         {/* Bottom Stats */}
-
-//        <div className="mt-8 md:mt-12 p-[1px] rounded-2xl bg-gradient-to-r from-[#F0B100] to-[#D08700]">
-
-//   <div className="rounded-2xl overflow-hidden bg-black">
-
-//     <div
-//   className="
-//     grid
-//     grid-cols-2
-//     md:grid-cols-3
-//     lg:grid-cols-6
-
-//     gap-[1px]
-
-//     bg-[linear-gradient(90deg,#000000_0%,rgba(253,199,0,0.44)_45.68%,#000000_100%)]
-
-//     rounded-2xl
-//     overflow-hidden
-//   "
-// >
-//       {stats.map((item, index) => (
-
-//         <div
-//           key={index}
-//           className="
-//           min-h-[120px]
-//           sm:min-h-[140px]
-//           lg:min-h-[100px]
-//           px-2
-//           sm:px-3
-//           py-3
-//           flex
-//           flex-col
-//           sm:flex-row
-//           items-center
-//           justify-center
-//           gap-3
-//           text-center
-//           sm:text-left
-//           bg-black
-//           shadow-[inset_0px_0px_60px_0px_#F0B1002E]
-//         "
-//         >
-
-//           <img
-//             src={coinIcon}
-//             alt=""
-//             className="
-//             w-12 h-12
-//             sm:w-14 sm:h-14
-//             lg:w-16 lg:h-16
-//             flex-shrink-0
-//             "
-//           />
-
-//           <div>
-
-//             <h2 className="
-//             mb-1
-//             bg-gradient-to-r
-//             from-[#F0B100]
-//             to-[#D08700]
-//             bg-clip-text
-//             text-transparent
-
-//             text-xl
-//             sm:text-2xl
-//             lg:text-3xl
-
-//             font-medium
-//             ">
-//               {item.value}
-//             </h2>
-
-//             <p className="
-//             text-[#D8D8D8]
-//             text-[10px]
-//             mb-1
-//             ">
-//               {item.label}
-//             </p>
-
-//             <span className="
-//             block
-//             text-[#D8D8D8]
-//             text-[10px]
-//             ">
-//               {item.desc}
-//             </span>
-
-//           </div>
-
-//         </div>
-
-//       ))}
-//     </div>
-
-//   </div>
-
-// </div>
-
-//       </div>
-
-//     </section>
-//   );
-// }
-
 
 
 

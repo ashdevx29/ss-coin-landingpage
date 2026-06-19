@@ -19,7 +19,7 @@ const stats = [
 
 export default function StatsSection() {
   return (
-    <section className="bg-black py-6 font-['Inter'] md:py-12">
+    <section className="bg-black py-4 font-['Inter'] md:py-8">
 
       <div className="max-w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 ">
 
