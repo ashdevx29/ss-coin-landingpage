@@ -79,7 +79,7 @@ const Navbar = () => {
   >
     Buy SSC Now
   </button> */}
-  <a
+  {/* <a
   href="/presale"
   className="
     flex
@@ -95,9 +95,64 @@ const Navbar = () => {
     lg:text-[16px]
     font-medium
     [clip-path:polygon(12%_0%,100%_0%,100%_75%,88%_100%,0%_100%,0%_30%)]
+    hover:bg-gradient-to-r from-[#D08700] to-[#F0B100]
   "
 >
   Buy SSC Now
+</a> */}
+<a
+  href="/presale"
+  className="
+    group
+    relative
+    overflow-hidden
+    flex
+    items-center
+    justify-center
+    h-[45px]
+    md:w-[120px]
+    lg:w-[130px]
+    xl:w-[140px]
+
+    bg-gradient-to-r
+    from-[#F0B100]
+    to-[#D08700]
+
+    text-white
+    text-[14px]
+    lg:text-[16px]
+    font-medium
+
+    [clip-path:polygon(12%_0%,100%_0%,100%_75%,88%_100%,0%_100%,0%_30%)]
+
+    transition-all
+    duration-300
+    hover:scale-105
+    hover:-translate-y-1
+    hover:shadow-[0_0_25px_rgba(240,177,0,0.55)]
+    hover:from-[#D08700]
+    hover:to-[#F0B100]
+  "
+>
+  <span className="relative z-10">
+    Buy SSC Now
+  </span>
+
+  {/* Shine Effect */}
+  <span
+    className="
+      absolute
+      top-0
+      -left-[120%]
+      w-[60%]
+      h-full
+      bg-white/20
+      skew-x-[-25deg]
+      transition-all
+      duration-700
+      group-hover:left-[130%]
+    "
+  />
 </a>
 </div>
           {/* Mobile Menu Button */}
@@ -159,22 +214,53 @@ const Navbar = () => {
 <a
   href="/presale"
   className="
+    group
+    relative
+    overflow-hidden
+
     h-[50px]
     w-[180px]
-    bg-gradient-to-r from-[#F0B100] to-[#D08700]
-    text-white
-    text-lg
-    font-medium
+
     flex
     items-center
     justify-center
+
+    bg-gradient-to-r
+    from-[#F0B100]
+    to-[#D08700]
+
+    text-white
+    text-lg
+    font-medium
+
     [clip-path:polygon(12%_0%,100%_0%,100%_75%,88%_100%,0%_100%,0%_30%)]
-    hover:scale-105
+
     transition-all
     duration-300
+
+    hover:scale-105
+    hover:-translate-y-1
+    hover:shadow-[0_0_25px_rgba(240,177,0,0.55)]
   "
 >
-  Buy SSC Now
+  <span className="relative z-10">
+    Buy SSC Now
+  </span>
+
+  <span
+    className="
+      absolute
+      top-0
+      -left-[120%]
+      w-[60%]
+      h-full
+      bg-white/20
+      skew-x-[-25deg]
+      transition-all
+      duration-700
+      group-hover:left-[130%]
+    "
+  />
 </a>
         </div>
       </div>

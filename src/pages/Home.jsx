@@ -37,8 +37,8 @@ const Home = () => {
     <>
        {/* <Navbar /> */}
             <Hero />
-            <Number />
             <Why/>
+             <Number />
             <About/>
             <UseCases/>
             <Roadmap/>

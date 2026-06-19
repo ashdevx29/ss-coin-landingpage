@@ -2,22 +2,40 @@ import usdt from "../../assets/usdt.png";
 import ss from "../../assets/logo.png";
 import bgImage from "../../assets/bgbuy.png";
 import { Link } from "react-router-dom";
+import Header from "../Navbar";
+
 export default function TokenSaleSection() {
 
 
 
   return (
-    <section id="joinpresale"
-      className="relative py-8 md:py-10 lg:py-14 text-white"
-      style={{
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="max-w-full  px-3 font-['Poppins'] sm:px-4 md:px-6 lg:px-8 xl:px-12">
+    <section
+  id="joinpresale"
+  className="relative overflow-hidden min-h-screen text-white"
+>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-6 items-center">
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+    style={{
+      backgroundImage: `url(${bgImage})`,
+    }}
+  />
+
+  {/* Dark Overlay */}
+  {/* <div className="absolute inset-0 bg-black/60 z-[1]" /> */}
+
+  {/* Header */}
+  <div className="relative z-50">
+    <Header />
+  </div>
+
+  {/* Main Content */}
+  <div className="relative z-20 py-10 md:py-14">
+
+    <div className="max-w-full px-3 font-['Poppins'] sm:px-4 md:px-6 lg:px-8 xl:px-12">
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-6 items-center">
 
           {/* LEFT */}
           <div className=" order-1 lg:order-1 flex flex-col items-center text-center lg:items-start lg:text-left">
@@ -350,7 +368,10 @@ SS COIN: Presale is Live.
 
         </div>
 
-      </div>
-    </section>
+    </div>
+
+  </div>
+
+</section>
   );
 }

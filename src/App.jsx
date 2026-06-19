@@ -6,7 +6,7 @@ import {
   Route,
   useLocation
 } from 'react-router-dom';
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Presale from './pages/Presale';
@@ -52,7 +52,7 @@ function App() {
     <BrowserRouter>
 
       <ScrollAnimationHandler />
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/presale" element={<Presale />} />
