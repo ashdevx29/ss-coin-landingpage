@@ -51,6 +51,14 @@ export default function TokenSaleSection() {
   });
   const [isPresaleActive, setIsPresaleActive] = useState(true);
 
+  // Custom Toast State
+  const [customToast, setCustomToast] = useState(null);
+
+  const showCustomToast = (msg, type = "error") => {
+    setCustomToast({ msg, type });
+    setTimeout(() => setCustomToast(null), 5000);
+  };
+
   // Calculate token amount based on USDT input
   const calculateTokenAmount = (usdt) => {
     const usdtNum = parseFloat(usdt) || 0;
@@ -173,13 +181,9 @@ export default function TokenSaleSection() {
         provider,
       );
       const promises = [
-        presaleContract.totalTokensSold().catch(() => ethers.BigNumber.from(0)),
-        presaleContract
-          .totalUSDTCollected()
-          .catch(() => ethers.BigNumber.from(0)),
-        presaleContract
-          .tokensPerUSDT()
-          .catch(() => ethers.BigNumber.from(10000)),
+        presaleContract.totalTokensSold().catch(() => 0n),
+        presaleContract.totalUSDTCollected().catch(() => 0n),
+        presaleContract.tokensPerUSDT().catch(() => 10000n),
       ];
 
       const [sold, raised, tokenPrice] = await Promise.all(promises);
@@ -226,10 +230,7 @@ export default function TokenSaleSection() {
     } catch (error) {
       console.error("Error checking allowance:", error);
       setError("Failed to check allowance");
-      toast.error("Failed to check allowance", {
-        position: "top-right",
-        autoClose: 5000,
-      });
+      showCustomToast("Failed to check allowance", "error");
     }
   };
 
@@ -238,10 +239,7 @@ export default function TokenSaleSection() {
     console.log("APPROVE USDT BUTTON CLICKED!");
     if (!address) {
       setError("Please connect your wallet");
-      toast.error("Please connect your wallet", {
-        position: "top-right",
-        autoClose: 5000,
-      });
+      showCustomToast("Please connect your wallet", "error");
       return;
     }
     if (
@@ -252,18 +250,12 @@ export default function TokenSaleSection() {
         timeLeft.seconds === 0)
     ) {
       setError("Presale has ended");
-      toast.error("Presale has ended", {
-        position: "top-right",
-        autoClose: 5000,
-      });
+      showCustomToast("Presale has ended", "error");
       return;
     }
     if (!usdtAmount || parseFloat(usdtAmount) < MIN_INVESTMENT_USD) {
       setError(`Minimum investment is $${MIN_INVESTMENT_USD}`);
-      toast.error(`Minimum investment is $${MIN_INVESTMENT_USD}`, {
-        position: "top-right",
-        autoClose: 5000,
-      });
+      showCustomToast(`Minimum investment is $${MIN_INVESTMENT_USD}`, "error");
       return;
     }
     setLoading(true);
@@ -274,17 +266,21 @@ export default function TokenSaleSection() {
       const usdtContract = new Contract(USDT_ADDRESS, USDT_ABI, signer);
       const amount = ethers.parseUnits(usdtAmount, 18);
       const tx = await usdtContract.approve(PRESALE_ADDRESS, amount);
+      showCustomToast("Transaction submitted! Waiting for confirmation...", "info");
       await tx.wait();
       setIsApproved(true);
-      toast.success("USDT approved successfully!", {
-        position: "top-right",
-        autoClose: 5000,
-      });
+      showCustomToast("USDT approved successfully!", "success");
     } catch (error) {
       console.error("Error approving USDT:", error);
       let errorMessage = "Failed to approve USDT";
       
-      if (error.code === 4001 || error?.message?.includes("rejected")) {
+      if (
+        error.code === "ACTION_REJECTED" || 
+        error.code === 4001 || 
+        (error.info && error.info.error && error.info.error.code === 4001) ||
+        error?.message?.toLowerCase().includes("rejected") ||
+        error?.message?.toLowerCase().includes("denied")
+      ) {
         errorMessage = "Transaction rejected by user";
       } else if (error.reason) {
         errorMessage = error.reason;
@@ -306,12 +302,10 @@ export default function TokenSaleSection() {
 
   // Buy with USDT
   const buyWithUSDT = async () => {
+    console.warn(">>> buyWithUSDT FUNCTION TRIGGERED! <<<");
     if (!address) {
       setError("Please connect your wallet");
-      toast.error("Please connect your wallet", {
-        position: "top-right",
-        autoClose: 5000,
-      });
+      showCustomToast("Please connect your wallet", "error");
       return;
     }
     if (
@@ -322,70 +316,76 @@ export default function TokenSaleSection() {
         timeLeft.seconds === 0)
     ) {
       setError("Presale has ended");
-      toast.error("Presale has ended", {
-        position: "top-right",
-        autoClose: 5000,
-      });
+      showCustomToast("Presale has ended", "error");
       return;
     }
     if (!usdtAmount || parseFloat(usdtAmount) < MIN_INVESTMENT_USD) {
       setError(`Minimum investment is $${MIN_INVESTMENT_USD}`);
-      toast.error(`Minimum investment is $${MIN_INVESTMENT_USD}`, {
-        position: "top-right",
-        autoClose: 5000,
-      });
+      showCustomToast(`Minimum investment is $${MIN_INVESTMENT_USD}`, "error");
       return;
     }
     if (parseFloat(usdtBalance) < parseFloat(usdtAmount)) {
+      console.warn("Insufficient USDT balance. Balance:", usdtBalance, "Amount:", usdtAmount);
       setError("Insufficient USDT balance");
-      toast.error("Insufficient USDT balance", {
-        position: "top-right",
-        autoClose: 5000,
-      });
+      showCustomToast("Insufficient USDT balance", "error");
       return;
     }
+    console.log("All pre-checks passed. Setting loading state...");
     setLoading(true);
     setError("");
     try {
+      console.log("Initializing provider and signer...");
       const ethersProvider = new BrowserProvider(walletProvider);
+      console.log("Provider initialized. Fetching signer...");
       const signer = await ethersProvider.getSigner();
+      console.log("Signer fetched:", await signer.getAddress());
       const presaleContract = new Contract(
         PRESALE_ADDRESS,
         PRESALE_ABI,
         signer,
       );
       const amount = ethers.parseUnits(usdtAmount, 18);
+      console.log("Amount parsed:", amount.toString());
 
       let gasLimit;
       try {
+        console.log("Estimating gas...");
         const estimatedGas = await presaleContract.buyWithUSDT.estimateGas(amount);
         gasLimit = (estimatedGas * 120n) / 100n; // 20% buffer
+        console.log("Gas estimated:", gasLimit.toString());
       } catch (gasError) {
         console.warn("Gas estimation failed. Falling back to manual limit.", gasError);
         gasLimit = 500000n; // Fallback gas limit
       }
 
+      console.log("Sending transaction...");
       const tx = await presaleContract.buyWithUSDT(amount, { gasLimit });
+      console.log("Transaction sent. Hash:", tx.hash);
+      showCustomToast("Transaction submitted! Waiting for confirmation...", "info");
       await tx.wait();
       
+      showCustomToast("Purchase successful!", "success");
+
       setUsdtAmount("");
       setTokenAmount("");
-      await Promise.all([
+      // Run updates in background without awaiting them to block the UI
+      Promise.all([
         fetchPresaleInfo(),
         fetchUsdtBalance(),
         fetchSMCBalance(),
         checkAllowance(), // re-check allowance
-      ]);
-
-      toast.success("Purchase successful!", {
-        position: "top-right",
-        autoClose: 5000,
-      });
+      ]).catch(console.error);
     } catch (error) {
       console.error("Error buying with USDT:", error);
       let errorMessage = "Failed to complete purchase";
       
-      if (error.code === 4001 || error?.message?.includes("rejected")) {
+      if (
+        error.code === "ACTION_REJECTED" || 
+        error.code === 4001 || 
+        (error.info && error.info.error && error.info.error.code === 4001) ||
+        error?.message?.toLowerCase().includes("rejected") ||
+        error?.message?.toLowerCase().includes("denied")
+      ) {
         errorMessage = "Transaction rejected by user";
       } else if (error.reason) {
         errorMessage = error.reason;
@@ -396,10 +396,7 @@ export default function TokenSaleSection() {
       }
       
       setError(errorMessage);
-      toast.error(errorMessage, {
-        position: "top-right",
-        autoClose: 5000,
-      });
+      showCustomToast(errorMessage, "error");
     } finally {
       setLoading(false);
     }
@@ -459,6 +456,33 @@ export default function TokenSaleSection() {
 
   return (
     <>
+      <style>{`
+        body {
+          overflow-x: hidden;
+        }
+      `}</style>
+
+      {/* Custom Popup UI */}
+      {customToast && (
+        <div 
+          className="fixed z-[9999999] transition-all duration-300 ease-in-out flex items-center justify-between"
+          style={{ 
+            top: "20px", 
+            right: "20px", 
+            minWidth: "280px", 
+            padding: "16px 20px", 
+            borderRadius: "8px", 
+            background: customToast.type === 'error' ? '#ef4444' : customToast.type === 'success' ? '#22c55e' : '#3b82f6', 
+            color: 'white', 
+            boxShadow: '0 10px 25px rgba(0,0,0,0.5)',
+            fontFamily: 'sans-serif'
+          }}
+        >
+          <span className="font-semibold text-sm md:text-base">{customToast.msg}</span>
+          <button onClick={() => setCustomToast(null)} className="ml-4 text-white hover:text-gray-200 focus:outline-none text-xl leading-none">&times;</button>
+        </div>
+      )}
+
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -469,7 +493,7 @@ export default function TokenSaleSection() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        style={{ zIndex: 9999 }}
+        style={{ zIndex: 9999999, position: "fixed", top: "20px", right: "20px" }}
       />
       <section
         id="joinpresale"
@@ -515,7 +539,7 @@ export default function TokenSaleSection() {
 
                 <div className="flex flex-wrap justify-center gap-6 mt-5">
                   <a
-                    href="/presale/?=joinpresale"
+                    href="#joinpresale"
                     className="group relative w-[160px] h-[48px]"
                   >
                     <svg
@@ -539,7 +563,7 @@ export default function TokenSaleSection() {
                     </svg>
 
                     <span className="absolute inset-0 flex items-center justify-center text-white font-medium">
-                      Purchse Now
+                      Purchase Now
                     </span>
                   </a>
                 </div>
@@ -734,6 +758,7 @@ export default function TokenSaleSection() {
                             type="text"
                             placeholder="Enter SS Coin Amount"
                             value={tokenAmount}
+                            readOnly
                             className="
     flex-1
     min-w-0
@@ -793,7 +818,15 @@ export default function TokenSaleSection() {
                       <button
                         type="button"
                         className={`group relative w-[160px] h-[48px] block transition-all duration-300 ${loading ? "opacity-70 cursor-not-allowed" : "hover:scale-105"}`}
-                        onClick={isApproved ? buyWithUSDT : approveUSDT}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          console.warn("Button clicked! isApproved state:", isApproved);
+                          if (isApproved) {
+                            buyWithUSDT();
+                          } else {
+                            approveUSDT();
+                          }
+                        }}
                         disabled={loading}
                       >
                         <svg
