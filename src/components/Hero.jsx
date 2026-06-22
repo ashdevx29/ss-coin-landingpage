@@ -295,7 +295,7 @@ export default function HeroSection() {
 
           <div className="rounded-2xl overflow-hidden bg-black">
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-[1px] bg-[rgba(240,177,0,0.25)]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-[1px] bg-[rgba(240,177,0,0.25)]">
 
               {stats.map((item, index) => (
 
